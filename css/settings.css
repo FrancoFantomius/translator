@@ -1,0 +1,257 @@
+/* Settings Dialog Layout & Controls */
+
+.settings-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.settings-dialog-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-header-actions {
+  display: flex;
+  align-items: center;
+}
+
+#settings-close-x-btn {
+  border-radius: 50%;
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+}
+
+#settings-close-x-btn:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 14%, transparent);
+}
+
+#settings-close-x-btn:active {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 22%, transparent);
+}
+
+.settings-header-icon {
+  color: var(--md-sys-color-on-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-dialog-title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--md-sys-color-on-surface);
+}
+
+.settings-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 0;
+  min-height: 400px;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+}
+
+/* Sections with stacked layout (buttons on their own line, occupying full container width) */
+.setting-dialog-section,
+.setting-dialog-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.setting-dialog-section:has(#app-language-menu),
+.setting-dialog-row:has(#app-language-menu) {
+  z-index: 100;
+}
+
+.setting-dialog-section:has(#app-language-menu[open]),
+.setting-dialog-row:has(#app-language-menu[open]) {
+  z-index: 1000;
+}
+
+.setting-theme-switch-row {
+  display: flex;
+  width: 100%;
+}
+
+.setting-theme-switch-row md-segmented-button-set {
+  width: 100%;
+  display: flex;
+}
+
+.setting-theme-switch-row md-segmented-button {
+  flex: 1;
+}
+
+.setting-dialog-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.setting-dialog-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+}
+
+.setting-dialog-desc {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--md-sys-color-outline);
+}
+
+.setting-dialog-control {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 100;
+}
+
+.setting-dialog-control md-button,
+.setting-dialog-control .app-lang-select-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* App Language menu in settings dialog */
+#app-language-menu {
+  --md-menu-max-height: 320px;
+  --md-menu-min-width: 100%;
+  --md-menu-max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+#app-language-menu[open] {
+  z-index: 1000;
+}
+
+.app-lang-select-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized),
+              border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+}
+
+.app-lang-select-btn:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+.app-lang-select-btn:active {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+}
+
+.app-lang-select-btn:focus-visible {
+  outline: 2px solid var(--md-sys-color-outline);
+  outline-offset: 2px;
+}
+
+/* Clear History Button in Settings Dialog - Base color, full width */
+#setting-clear-history-btn {
+  width: 100%;
+  --md-sys-color-primary: var(--md-sys-color-on-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+/* Tooltips inside dialog should not disrupt flex flow */
+md-dialog md-tooltip {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Dialog outline and border reset */
+md-dialog,
+#app-settings-dialog {
+  outline: none;
+  border: none;
+}
+
+md-dialog:focus,
+md-dialog:focus-visible,
+#app-settings-dialog:focus,
+#app-settings-dialog:focus-visible {
+  outline: none;
+  border: none;
+}
+
+/* Responsive adjustment for small screens (mobile <= 500px) */
+@media (max-width: 500px) {
+  .settings-dialog-header {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .settings-dialog-content {
+    min-height: auto;
+    flex: 1;
+    gap: 16px;
+    padding: 16px 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .setting-dialog-section,
+  .setting-dialog-row {
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
+  }
+
+  .setting-theme-switch-row,
+  .setting-theme-switch-row md-segmented-button-set {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .setting-dialog-control {
+    width: 100%;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .setting-dialog-control md-button,
+  .setting-dialog-control #app-language-menu {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .app-lang-select-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}

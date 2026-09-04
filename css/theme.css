@@ -1,0 +1,131 @@
+@import "./variables.css";
+@import "./translator.css";
+@import "./models.css";
+@import "./history.css";
+@import "./settings.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized),
+              color var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
+}
+
+/* Material symbols font helper */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* App container layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Top App Bar custom styling */
+md-top-app-bar {
+  z-index: 100;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.brand-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.app-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tooltip host styling - ensure tooltips do not affect flexbox gaps or layout flow */
+md-tooltip {
+  position: absolute;
+  z-index: 10001;
+  --md-tooltip-offset: 10px;
+}
+
+/* Universal Button Styles */
+button,
+md-button,
+md-icon-button {
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized),
+              color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+}
+
+md-button {
+  border-radius: var(--md-button-border-radius, var(--md-button-shape, 9999px));
+}
+
+md-button[variant="outlined"]:hover:not([disabled]),
+md-button[variant="text"]:hover:not([disabled]) {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+md-icon-button {
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+md-icon-button:hover:not([disabled]) {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+}
+
+md-icon-button:active:not([disabled]) {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 18%, transparent);
+}

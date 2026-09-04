@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translator</title>
+    <meta name="description" content="Private translations" />
+    <link rel="stylesheet" href="/css/theme.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Top App Bar -->
+      <md-top-app-bar variant="small" elevated fixed>
+        <div slot="navigation" class="brand-title" style="padding-left: 8px;">
+          <md-icon name="translate" size="28" style="color: var(--md-sys-color-primary);" filled></md-icon>
+          <span data-i18n="app.name">Translator</span>
+        </div>
+
+        <div slot="actions" class="app-bar-actions">
+          <md-icon-button id="history-action-btn" icon="history" data-i18n-aria-label="header.historyAria" aria-label="Translation history"></md-icon-button>
+          <md-tooltip for="history-action-btn" data-i18n-tooltip="header.historyTooltip" value="Translation history" position="bottom"></md-tooltip>
+          <md-icon-button id="theme-toggle-btn" icon="brightness_auto" data-i18n-aria-label="header.themeAuto" aria-label="Theme: System"></md-icon-button>
+          <md-tooltip id="theme-toggle-tooltip" for="theme-toggle-btn" data-i18n-tooltip="header.themeAuto" value="Theme: System" position="bottom"></md-tooltip>
+          <md-icon-button id="settings-action-btn" icon="settings" data-i18n-aria-label="header.settingsAria" aria-label="Settings"></md-icon-button>
+          <md-tooltip for="settings-action-btn" data-i18n-tooltip="header.settingsTooltip" value="Settings" position="bottom"></md-tooltip>
+        </div>
+      </md-top-app-bar>
+
+      <!-- Main Application Container -->
+      <main class="app-main">
+        <div id="view-translator">
+          <!-- Language Selector Bar -->
+          <div class="language-bar">
+            <div class="language-selector-group">
+              <!-- Source Language Menu -->
+              <md-menu id="source-lang-menu" positioning="fixed" placement="bottom-start" dense>
+                <button slot="trigger" class="language-select-btn active" id="source-lang-trigger">
+                  <md-icon name="translate" size="18"></md-icon>
+                  <span id="source-lang-label">English</span>
+                  <md-icon name="arrow_drop_down" size="18"></md-icon>
+                </button>
+              </md-menu>
+              <md-tooltip for="source-lang-trigger" data-i18n-tooltip="translator.selectSourceTooltip" value="Select source language" position="bottom"></md-tooltip>
+
+              <div class="quick-lang-chips" id="source-quick-chips">
+                <md-chip label="English" selected class="quick-source-chip" data-code="en"></md-chip>
+                <md-chip label="Spanish" class="quick-source-chip" data-code="es"></md-chip>
+                <md-chip label="French" class="quick-source-chip" data-code="fr"></md-chip>
+                <md-chip label="German" class="quick-source-chip" data-code="de"></md-chip>
+              </div>
+            </div>
+
+            <!-- Swap Button -->
+            <md-icon-button
+              id="swap-lang-btn"
+              icon="swap_horiz"
+              variant="tonal"
+              data-i18n-aria-label="translator.swapAria"
+              aria-label="Swap source and target languages"
+            ></md-icon-button>
+            <md-tooltip for="swap-lang-btn" data-i18n-tooltip="translator.swapTooltip" value="Swap languages" position="bottom"></md-tooltip>
+
+            <div class="language-selector-group" style="justify-content: flex-end;">
+              <div class="quick-lang-chips" id="target-quick-chips">
+                <md-chip label="English" class="quick-target-chip" data-code="en"></md-chip>
+                <md-chip label="Spanish" selected class="quick-target-chip" data-code="es"></md-chip>
+                <md-chip label="French" class="quick-target-chip" data-code="fr"></md-chip>
+                <md-chip label="German" class="quick-target-chip" data-code="de"></md-chip>
+              </div>
+
+              <!-- Target Language Menu -->
+              <md-menu id="target-lang-menu" positioning="fixed" placement="bottom-end" dense>
+                <button slot="trigger" class="language-select-btn active" id="target-lang-trigger">
+                  <span id="target-lang-label">Spanish</span>
+                  <md-icon name="arrow_drop_down" size="18"></md-icon>
+                </button>
+              </md-menu>
+              <md-tooltip for="target-lang-trigger" data-i18n-tooltip="translator.selectTargetTooltip" value="Select target language" position="bottom"></md-tooltip>
+            </div>
+          </div>
+
+          <!-- Translation Workspace Cards -->
+          <div class="translation-grid">
+            <!-- Source Card -->
+            <md-card variant="outlined" class="translation-card">
+              <div slot="header" class="card-header-bar">
+                <span class="card-header-title" id="source-card-title">English (Original)</span>
+                <div style="display: flex; gap: 4px;">
+                  <md-icon-button id="clear-source-btn" icon="close" data-i18n-aria-label="translator.clearSourceAria" aria-label="Clear source text" disabled></md-icon-button>
+                  <md-tooltip for="clear-source-btn" data-i18n-tooltip="translator.clearSourceTooltip" value="Clear source text" position="bottom"></md-tooltip>
+                </div>
+              </div>
+
+              <div class="card-content-wrapper">
+                <div class="text-area-container">
+                  <textarea
+                    id="source-input"
+                    class="source-textarea"
+                    data-i18n-placeholder="translator.sourcePlaceholder"
+                    placeholder="Type or paste text to translate"
+                    spellcheck="false"
+                  ></textarea>
+                  <div class="image-preview-container" id="source-image-preview" style="display: none;">
+                    <div class="image-preview-wrapper" id="source-image-wrapper">
+                      <img id="source-preview-img" class="card-preview-image" data-i18n-alt="translator.originalImageAlt" alt="Original image" />
+                      <div class="ocr-overlay-layer" id="source-ocr-overlay"></div>
+                      <div class="ocr-loading-overlay" id="source-ocr-loading" style="display: none;">
+                        <md-loading-indicator size="40"></md-loading-indicator>
+                        <span class="ocr-loading-text" id="source-ocr-status" data-i18n="translator.ocrDetecting">Detecting text...</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="drop-overlay" id="source-drop-overlay">
+                    <md-icon name="upload_file" size="36"></md-icon>
+                    <span class="drop-overlay-text" data-i18n="translator.dropOverlay">Drop the file to translate it</span>
+                  </div>
+                </div>
+
+                <div class="card-footer-bar">
+                  <div class="card-tools">
+                    <input type="file" id="camera-file-input" accept="image/*" capture="environment" style="display: none;" aria-hidden="true" />
+                    <md-icon-button id="camera-btn" icon="photo_camera" data-i18n-aria-label="translator.cameraAria" aria-label="Take a photo"></md-icon-button>
+                    <md-tooltip for="camera-btn" data-i18n-tooltip="translator.cameraTooltip" value="Take a photo" position="top"></md-tooltip>
+                    <md-icon-button id="voice-input-btn" icon="mic" data-i18n-aria-label="translator.voiceAria" aria-label="Speech to text"></md-icon-button>
+                    <md-tooltip for="voice-input-btn" data-i18n-tooltip="translator.voiceTooltip" value="Speech to text" position="top"></md-tooltip>
+                    <md-icon-button id="tts-source-btn" icon="volume_up" data-i18n-aria-label="translator.ttsSourceAria" aria-label="Read original text aloud"></md-icon-button>
+                    <md-tooltip id="tts-source-tooltip" for="tts-source-btn" data-i18n-tooltip="translator.ttsSourceTooltip" value="Read original text aloud" position="top"></md-tooltip>
+                    <input type="file" id="attachment-file-input" accept=".txt,.md,.json,.csv,.text,text/plain,application/pdf,image/*" style="display: none;" aria-hidden="true" />
+                    <md-icon-button id="attachment-btn" icon="attach_file" data-i18n-aria-label="translator.uploadAria" aria-label="Upload a file"></md-icon-button>
+                    <md-tooltip for="attachment-btn" data-i18n-tooltip="translator.uploadTooltip" value="Upload a file" position="top"></md-tooltip>
+                  </div>
+                  <div>
+                    <md-button id="translate-action-btn" variant="filled" icon="translate" data-i18n-label="translator.translateBtn">
+                      Translate
+                    </md-button>
+                    <md-tooltip for="translate-action-btn" data-i18n-tooltip="translator.translateTooltip" value="Translate text" position="top"></md-tooltip>
+                  </div>
+                </div>
+              </div>
+            </md-card>
+
+            <!-- Target Card -->
+            <md-card id="target-card" variant="filled" class="translation-card">
+              <div slot="header" class="card-header-bar">
+                <span class="card-header-title" id="target-card-title">Spanish (Translation)</span>
+              </div>
+
+              <div class="card-content-wrapper">
+                <div class="text-area-container">
+                  <div class="target-output" id="target-output-content"><span class="target-output placeholder" data-i18n="translator.targetPlaceholder">The translation will appear here</span></div>
+                  <div class="image-preview-container" id="target-image-preview" style="display: none;">
+                    <div class="image-preview-wrapper" id="target-image-wrapper">
+                      <img id="target-preview-img" class="card-preview-image" data-i18n-alt="translator.translationImageAlt" alt="Translation image" />
+                      <div class="ocr-overlay-layer" id="target-ocr-overlay"></div>
+                      <div class="ocr-loading-overlay" id="target-ocr-loading" style="display: none;">
+                        <md-loading-indicator size="40"></md-loading-indicator>
+                        <span class="ocr-loading-text" id="target-ocr-status" data-i18n="translator.ocrTranslating">Translating text...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-footer-bar">
+                  <div class="card-tools">
+                    <md-icon-button id="copy-target-btn" icon="content_copy" data-i18n-aria-label="translator.copyAria" aria-label="Copy translated text"></md-icon-button>
+                    <md-tooltip for="copy-target-btn" data-i18n-tooltip="translator.copyTooltip" value="Copy translated text" position="top"></md-tooltip>
+                    <md-icon-button id="tts-target-btn" icon="volume_up" data-i18n-aria-label="translator.ttsTargetAria" aria-label="Read translation aloud"></md-icon-button>
+                    <md-tooltip id="tts-target-tooltip" for="tts-target-btn" data-i18n-tooltip="translator.ttsTargetTooltip" value="Read translation aloud" position="top"></md-tooltip>
+                    <md-icon-button
+                      id="star-target-btn"
+                      toggle
+                      icon="star_border"
+                      selected-icon="star"
+                      data-i18n-aria-label="translator.starAria"
+                      aria-label="Save to favorites"
+                    ></md-icon-button>
+                    <md-tooltip id="star-target-tooltip" for="star-target-btn" data-i18n-tooltip="translator.starTooltipAdd" value="Save to favorites" position="top"></md-tooltip>
+                    <md-icon-button id="share-target-btn" icon="share" data-i18n-aria-label="translator.shareAria" aria-label="Share link"></md-icon-button>
+                    <md-tooltip for="share-target-btn" data-i18n-tooltip="translator.shareTooltip" value="Share link" position="top"></md-tooltip>
+                  </div>
+                </div>
+              </div>
+            </md-card>
+          </div>
+        </div>
+      </main>
+
+      <!-- History Side Sheet (Desktop) -->
+      <md-side-sheet id="history-sheet" type="modal" side="end" data-i18n-headline="history.headline" headline="Translation History" divider>
+        <md-icon-button slot="close-button" id="history-sheet-close-btn" class="history-close-btn" icon="close" data-i18n-aria-label="history.closeAria" aria-label="Close translation history"></md-icon-button>
+        <div id="view-history"></div>
+      </md-side-sheet>
+      <md-tooltip for="history-sheet-close-btn" data-i18n-tooltip="history.closeTooltip" value="Close" position="bottom" show-delay="150"></md-tooltip>
+
+      <!-- History Bottom Sheet (Mobile) -->
+      <md-bottom-sheet id="history-bottom-sheet" type="modal" data-i18n-headline="history.headline" headline="Translation History" divider>
+        <md-icon-button slot="close-button" id="history-bottom-sheet-close-btn" class="history-close-btn" icon="close" data-i18n-aria-label="history.closeAria" aria-label="Close translation history"></md-icon-button>
+      </md-bottom-sheet>
+      <md-tooltip for="history-bottom-sheet-close-btn" data-i18n-tooltip="history.closeTooltip" value="Close" position="bottom" show-delay="150"></md-tooltip>
+
+      <!-- Global Snackbar for notifications -->
+      <md-snackbar id="global-snackbar" closeable timeout-ms="3500"></md-snackbar>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
+

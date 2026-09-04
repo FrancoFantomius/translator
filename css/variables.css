@@ -1,0 +1,106 @@
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+
+/* Local Material Symbols Outlined Variable Font with all axes (FILL 0..1, wght, GRAD, opsz) */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 700;
+  src: url('@fontsource-variable/material-symbols-outlined/files/material-symbols-outlined-latin-full-normal.woff2') format('woff2-variations');
+}
+
+:root {
+  --md-sys-color-primary: #0b57d0;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d3e3fd;
+  --md-sys-color-on-primary-container: #041e49;
+  --md-sys-color-secondary: #535f70;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #d7e3f7;
+  --md-sys-color-on-secondary-container: #101c2b;
+  --md-sys-color-tertiary: #6b5778;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #f2daff;
+  --md-sys-color-on-tertiary-container: #251431;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: #fdfcff;
+  --md-sys-color-on-background: #1a1c1e;
+  --md-sys-color-surface: #fdfcff;
+  --md-sys-color-on-surface: #1a1c1e;
+  --md-sys-color-surface-variant: #dfe2eb;
+  --md-sys-color-on-surface-variant: #43474e;
+  --md-sys-color-outline: #73777f;
+  --md-sys-color-outline-variant: #c3c7d0;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f2f3f8;
+  --md-sys-color-surface-container: #eceef4;
+  --md-sys-color-surface-container-high: #e6e8ee;
+  --md-sys-color-surface-container-highest: #e0e2e8;
+  --md-sys-color-inverse-surface: #2f3033;
+  --md-sys-color-inverse-on-surface: #f1f0f4;
+  --md-sys-color-inverse-primary: #a8c7fa;
+
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-duration-medium: 300ms;
+  --md-sys-motion-duration-short: 200ms;
+
+  --md-sys-elevation-button-hover: 0 2px 6px rgba(0, 0, 0, 0.18);
+  --md-sys-elevation-level1: 0 2px 6px rgba(0, 0, 0, 0.18);
+  --md-sys-elevation-level2: 0 4px 10px rgba(0, 0, 0, 0.22);
+
+  --md-tooltip-offset: 10px;
+
+  font-family: 'Roboto', sans-serif;
+  color: var(--md-sys-color-on-background);
+  background-color: var(--md-sys-color-background);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --md-sys-color-primary: #a8c7fa;
+  --md-sys-color-on-primary: #003258;
+  --md-sys-color-primary-container: #004a77;
+  --md-sys-color-on-primary-container: #d3e3fd;
+  --md-sys-color-secondary: #bbc7db;
+  --md-sys-color-on-secondary: #253140;
+  --md-sys-color-secondary-container: #3b4858;
+  --md-sys-color-on-secondary-container: #d7e3f7;
+  --md-sys-color-tertiary: #d6bee4;
+  --md-sys-color-on-tertiary: #3b2948;
+  --md-sys-color-tertiary-container: #523f5f;
+  --md-sys-color-on-tertiary-container: #f2daff;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffdad6;
+  --md-sys-color-background: #111315;
+  --md-sys-color-on-background: #e2e2e6;
+  --md-sys-color-surface: #111315;
+  --md-sys-color-on-surface: #e2e2e6;
+  --md-sys-color-surface-variant: #43474e;
+  --md-sys-color-on-surface-variant: #c3c7d0;
+  --md-sys-color-outline: #8d9199;
+  --md-sys-color-outline-variant: #43474e;
+  --md-sys-color-surface-container-lowest: #0c0e11;
+  --md-sys-color-surface-container-low: #181c1f;
+  --md-sys-color-surface-container: #1c2024;
+  --md-sys-color-surface-container-high: #262a2e;
+  --md-sys-color-surface-container-highest: #313539;
+  --md-sys-color-inverse-surface: #e2e2e6;
+  --md-sys-color-inverse-on-surface: #2f3033;
+  --md-sys-color-inverse-primary: #0b57d0;
+
+  --md-sys-elevation-button-hover: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --md-sys-elevation-level1: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --md-sys-elevation-level2: 0 4px 12px rgba(0, 0, 0, 0.6);
+
+  --md-tooltip-offset: 10px;
+
+  color-scheme: dark;
+}
+

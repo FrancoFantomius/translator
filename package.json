@@ -1,0 +1,29 @@
+{
+  "name": "translator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check:i18n": "node scripts/check-localizations.js"
+  },
+  "dependencies": {
+    "@fontsource-variable/material-symbols-outlined": "^5.3.4",
+    "@fontsource/roboto": "^5.3.0",
+    "@francofantomius/material-components": "^1.1.2",
+    "@huggingface/transformers": "^3.8.1",
+    "cld3-asm": "^4.0.0",
+    "lit": "^3.3.3"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  },
+  "allowScripts": {
+    "onnxruntime-node@1.21.0": true,
+    "protobufjs@7.6.6": true,
+    "sharp@0.34.5": true
+  }
+}

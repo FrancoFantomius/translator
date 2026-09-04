@@ -1,0 +1,72 @@
+MIT License
+
+Copyright (c) 2026 Translator Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+Third-Party Software, Fonts & Machine Learning Model Attributions
+================================================================================
+
+This project utilizes open-source machine learning models, libraries, and fonts.
+Their respective licenses and attributions are detailed below:
+
+1. Helsinki-NLP Opus-MT Translation Models
+   - Creators: Jörg Tiedemann, Santhosh Thottingal, University of Helsinki Language Technology Research Group
+   - License: Creative Commons Attribution 4.0 International (CC-BY-4.0)
+   - License URL: https://creativecommons.org/licenses/by/4.0/
+   - Citation:
+     Jörg Tiedemann and Santhosh Thottingal. 2020. OPUS-MT — Building open translation services for the World.
+     In Proceedings of the 22nd Annual Conference of the European Association for Machine Translation (EAMT 2020).
+   - ONNX Port: Converted to browser-ready ONNX Q8 format by Xenova (Transformers.js).
+
+2. Meta M2M-100 Multilingual Translation Model
+   - Creators: Angela Fan, Shruti Bhosale, Holger Schwenk, Zhiyi Ma, Ahmed El-Kishky, Siddharth Goyal,
+     Mandeep Baines, Onur Celebi, Guillaume Wenzek, Vishrav Chaudhary, Naman Goyal, Tom Birch,
+     Vitaliy Liptchinsky, Sergey Edunov, Edouard Grave, Michael Auli, Armand Joulin (Meta AI / FAIR)
+   - License: MIT License (Meta Platforms, Inc.)
+   - Citation:
+     Angela Fan et al. 2020. Beyond English-Centric Multilingual Machine Translation.
+   - ONNX Port: Converted to browser-ready ONNX Q8 format by Xenova (Transformers.js).
+
+3. PaddleOCR PP-OCRv5 Mobile Models (Detection & Recognition)
+   - Creators: PaddlePaddle Authors, Baidu Inc.
+   - Models: PP-OCRv5_mobile_det_onnx, *_PP-OCRv5_mobile_rec_onnx
+   - License: Apache License, Version 2.0 (Apache-2.0)
+   - License URL: https://www.apache.org/licenses/LICENSE-2.0
+
+4. Google Compact Language Detector v3 (CLD3) & cld3-asm
+   - Creators: Google LLC (CLD3), WebAssembly port by OJ Kwon (cld3-asm)
+   - License: Apache License, Version 2.0 (Google CLD3) / MIT License (cld3-asm)
+
+5. Transformers.js
+   - Creators: Hugging Face Inc.
+   - License: Apache License, Version 2.0 (Apache-2.0)
+
+6. ONNX Runtime Web
+   - Creators: Microsoft Corporation
+   - License: MIT License
+
+7. Material Design 3 Web Components (@francofantomius/material-components)
+   - Creators: francofantomius
+   - License: MIT License
+
+8. Fonts (Roboto & Material Symbols Outlined)
+   - Creators: Google LLC
+   - License: Apache License, Version 2.0 (Apache-2.0)

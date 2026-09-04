@@ -1,0 +1,198 @@
+/* History View */
+#history-sheet,
+#history-side-sheet {
+  --md-side-sheet-width: 420px;
+}
+
+#history-bottom-sheet {
+  --md-bottom-sheet-max-width: 100%;
+  --md-bottom-sheet-max-height: 85dvh;
+}
+
+#history-sheet-close-btn,
+#history-bottom-sheet-close-btn,
+.history-close-btn {
+  border-radius: 50%;
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+}
+
+#history-sheet-close-btn:hover,
+#history-bottom-sheet-close-btn:hover,
+.history-close-btn:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 14%, transparent);
+}
+
+#history-sheet-close-btn:active,
+#history-bottom-sheet-close-btn:active,
+.history-close-btn:active {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 22%, transparent);
+}
+
+@media (max-width: 768px) {
+  #history-sheet,
+  #history-side-sheet {
+    display: none !important;
+  }
+
+  .history-container {
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  }
+}
+
+@media (min-width: 769px) {
+  #history-bottom-sheet {
+    display: none !important;
+  }
+}
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.history-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.history-search-wrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+#history-search-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0 !important;
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease;
+}
+
+#history-search-input:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+#clear-search-btn {
+  color: var(--md-sys-color-outline);
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+#clear-search-btn:hover {
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+#clear-history-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+#clear-history-btn:hover:not([disabled]) {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.history-card-item {
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.history-card-item:hover {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.history-card-item:active {
+  transform: scale(0.99);
+}
+
+.history-card-item:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+.history-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.history-languages {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.history-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.history-source {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--md-sys-color-on-surface);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.history-target {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.history-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.history-timestamp {
+  font-size: 12px;
+  color: var(--md-sys-color-outline);
+  white-space: nowrap;
+}
+
+.history-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
